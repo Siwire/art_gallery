@@ -1,0 +1,21 @@
+.backgroundheader{
+    background-image: url("../../assets/paper.jpg");
+    min-height: 250px;
+}
+
+.header {
+    &__container {
+        &__basket {
+            text-align: right;
+        }
+    }
+}
+
+.title {
+    &__container {
+        text-align: center;
+        & h1 {
+            width: 100%;
+        }
+    }
+}
