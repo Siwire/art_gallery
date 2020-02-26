@@ -4,7 +4,7 @@
             <div class="col-md-10"></div>
             <div class="col-md-1">search</div>
             <div class="col-md-1">
-                <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+                <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed" (click)= 'refreshTable()'
                     [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
                     Filter
                 </button>
@@ -15,34 +15,31 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
-                                  </div>
-                                  <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
-                                  </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
-                                  </div>
-                                  <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
-                                  </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+                            <div class="col-md-4" >
+                                <div>
+                                    <p>Format</p>
                                 </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+                                <div class="custom-control custom-radio" *ngFor='let nameSize of namesSize'>
+                                    <input mdbInt type="radio" id={{nameSize.name}} name="sizePaper" class="custom-control-input" 
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <p>Style</p>
+                                </div>
+                                <div class="custom-control custom-radio" *ngFor='let nameStyle of namesStyle'>
+                                    <input type="radio" id={{nameStyle.name}} name="style" class="custom-control-input">
+                                    <label class="custom-control-label" for={{nameStyle.name}}>{{nameStyle.name}}</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <p>Main color</p>
+                                </div>
+                                <div class="custom-control custom-radio" *ngFor='let nameColor of namesColor'>
+                                    <input type="radio" id={{nameColor.name}} name="mainColor" class="custom-control-input">
+                                    <label class="custom-control-label" for={{nameColor.name}}>{{nameColor.name}}</label>
                                 </div>
                             </div>
                         </div>
