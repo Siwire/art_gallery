@@ -11,7 +11,7 @@ export class FilterComponent implements OnInit {
   namesSize = [];
   namesStyle = [];
   namesColor = [];
-  async refreshTable() {
+  async getParametres() {
     const parametres = await fetch(url, {
       method: 'GET',
     });
@@ -20,7 +20,7 @@ export class FilterComponent implements OnInit {
     this.namesSize = json.sizes;
     this.namesStyle = json.styles;
     this.namesColor = json.colors;
-    
+    console.log(this.namesSize);
     }
 
   public isCollapsed = true;

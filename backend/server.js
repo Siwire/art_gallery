@@ -56,34 +56,10 @@ require('./pictures_routes')(app);
   app.listen(port, () => {
     console.log('Live on ' + port);
   });
-
-
-
-// Picture.findById('5e558bb2d70f7541e804dcfe').populate('size').populate('style').populate('color').then((picture) => {
-//   console.log(picture, 'asdasdsad');
-// });
-
-// Style.create({name: 'pencil'}).then((savedStyle) => {
-//   Size.create({name: 'A2'}).then((savedSize) => {
-//     Color.create({name: 'black'}).then((savedColor) => {
-//       Picture.create({
-//         title: 'aaa',
-//         route: 'sadasd',
-//         size: savedSize._id,
-//         style: savedStyle._id,
-//         color: savedColor._id
-//       })
-//       console.log(savedStyle, 'savedStyle');
-//       console.log(savedSize, 'savedSize');
-//       console.log(savedColor, 'savedColor');
-//     });
-//   });
-// });
-
-
+/*
 const pic = new Picture({ name: 'Winter' });
 pic.save().then(() => console.log('wow'))
-
+*/
 
   // const mongoClient = new MongoClient(db, { useNewUrlParser: true, useUnifiedTopology: true });
   // mongoClient.connect(async (err, client) => {

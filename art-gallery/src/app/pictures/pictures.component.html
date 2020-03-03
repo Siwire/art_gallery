@@ -1,67 +1,70 @@
 <div class="row">
     <div class="col">
-        <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
-            (click)='refreshTable()' [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-            Add Picture
-        </button>
-    </div>
-    <div class="row">
-        <div id="collapseExample" [ngbCollapse]="isCollapsed">
-            <div class="card">
-                <div class="card-body">
-                    <form [formGroup]="createPictureForm">
-                        <div class="row">
-                            <div class=" col-md-4">
-                                <button type="submit" class="btn btn-primary"
-                                    (click)='collectParametres()'>Submit</button>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Example file input</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="file" name="file"
-                                        (change)="onFileSelect($event)"
-                                    >
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <input class="form-control" type="text" formControlName="title" name="title" placeholder="Get name of picture"
-                                    (input)='input($event)'>
-                            </div>
-                            <div class="col-md-4">
-                                <div>
-                                    <p>Format</p>
-                                </div>
-                                <div class="custom-control custom-radio" *ngFor='let nameSize of namesSize'>
-                                    <input type="radio" id=add{{nameSize.name}} formControlName="addSizePaper" name="addSizePaper"
-                                        class="custom-control-input" value={{nameSize._id}} (input)='input($event)'>
-                                    <label class="custom-control-label"
-                                        for=add{{nameSize.name}}>{{nameSize.name}}</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div>
-                                    <p>Style</p>
-                                </div>
-                                <div class="custom-control custom-radio" *ngFor='let nameStyle of namesStyle'>
-                                    <input type="radio" id=add{{nameStyle.name}} formControlName="addStyle" name="addStyle"
-                                        class="custom-control-input" value={{nameStyle._id}} (input)='input($event)'>
-                                    <label class="custom-control-label"
-                                        for=add{{nameStyle.name}}>{{nameStyle.name}}</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div>
-                                    <p>Main color</p>
-                                </div>
-                                <div class="custom-control custom-radio" *ngFor='let nameColor of namesColor'>
-                                    <input type="radio" id=add{{nameColor.name}} formControlName="addMainColor" name="addMainColor"
-                                        class="custom-control-input" value={{nameColor._id}} (input)='input($event)'>
-                                    <label class="custom-control-label"
-                                        for=add{{nameColor.name}}>{{nameColor.name}}</label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+        <div class="row">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-outline-primary" (click)="openClosePictureForm()"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                    Add Picture
+                </button>
+            </div>
+            <div class="col-md-10"></div>
+        </div>
+
+        <div class="row" id="collapseExample" [ngbCollapse]="isCollapsed">
+            <form [formGroup]="createPictureForm" class="row">
+                <div class=" col-md-2 addparametres">
+                    <button type="submit" class="btn btn-primary" (click)='collectParametres()'>Submit</button>
+                </div>
+                <div class="col-md-2 addparametres">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Example file input</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="file"
+                            name="file" (change)="onFileSelect($event)">
+                    </div>
+                </div>
+                <div class="col-md-2 addparametres">
+                    <input class="form-control" type="text" formControlName="title" name="title"
+                        placeholder="Get name of picture" (input)='input($event)'>
+                </div>
+                <div class="col-md-2 addparametres">
+                    <div>
+                        <p>Format</p>
+                    </div>
+                    <div class="custom-control custom-radio" *ngFor='let nameSize of namesSize'>
+                        <input type="radio" id=add{{nameSize.name}} formControlName="addSizePaper" name="addSizePaper"
+                            class="custom-control-input" value={{nameSize._id}} (input)='input($event)'>
+                        <label class="custom-control-label" for=add{{nameSize.name}}>{{nameSize.name}}</label>
+                    </div>
+                </div>
+                <div class="col-md-2 addparametres">
+                    <div>
+                        <p>Style</p>
+                    </div>
+                    <div class="custom-control custom-radio" *ngFor='let nameStyle of namesStyle'>
+                        <input type="radio" id=add{{nameStyle.name}} formControlName="addStyle" name="addStyle"
+                            class="custom-control-input" value={{nameStyle._id}} (input)='input($event)'>
+                        <label class="custom-control-label" for=add{{nameStyle.name}}>{{nameStyle.name}}</label>
+                    </div>
+                </div>
+                <div class="col-md-2 addparametres">
+                    <div>
+                        <p>Main color</p>
+                    </div>
+                    <div class="custom-control custom-radio" *ngFor='let nameColor of namesColor'>
+                        <input type="radio" id=add{{nameColor.name}} formControlName="addMainColor" name="addMainColor"
+                            class="custom-control-input" value={{nameColor._id}} (input)='input($event)'>
+                        <label class="custom-control-label" for=add{{nameColor.name}}>{{nameColor.name}}</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"  *ngFor='let picture of pictures'>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{picture.route}}" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">{{picture.title}} <br> size: {{ picture.size.name}}</p>
+                    </div>
                 </div>
             </div>
         </div>
